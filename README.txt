@@ -8,3 +8,11 @@ dotnet restore
 dotnet ef dbcontext scaffold "server=localhost;port=3306;user=test;password=test;database=test" MySql.Data.EntityFrameworkCore -f
 # use
 dotnet run
+
+
+# create models for nothwind database imported from https://github.com/dalers/mywind
+# change target framework to netcoreapp2.1 and version of mysql packages to 6.10.8
+dotnet restore
+dotnet ef dbcontext scaffold "server=localhost;port=3306;user=northwind;password=northwind;database=northwind;SslMode=none" MySql.Data.EntityFrameworkCore -f
+# change back to 2.1 and 8.0.12 if it does not run
+dotnet run

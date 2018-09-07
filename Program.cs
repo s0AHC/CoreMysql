@@ -6,12 +6,13 @@ namespace CoreMysql
     {
         static void Main(string[] args)
         {
-            var db = new TestContext();
-            foreach (var number in db.Numbers)
+            using (var db = new NorthwindContext())
             {
-                Console.WriteLine(number.Name);
+                foreach (var item in db.Employees)
+                {
+                    Console.WriteLine(item.LastName + " " + item.FirstName);
+                }
             }
-            Console.WriteLine("Hello World!");
         }
     }
 }
